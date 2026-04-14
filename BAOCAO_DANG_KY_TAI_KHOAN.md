@@ -25,7 +25,7 @@ Chức năng Đăng ký tài khoản cho phép khách truy cập website tạo t
 
 ## User Story & INVEST
 
-### User Story (US1)
+### User Story 
 **Là một khách hàng mới, tôi muốn đăng ký tài khoản để có thể mua hàng trên website**
 
 ### Đánh giá Tiêu Chí INVEST
