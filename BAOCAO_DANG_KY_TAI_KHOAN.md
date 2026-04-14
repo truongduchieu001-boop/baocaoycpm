@@ -5,16 +5,12 @@
 
 ## Mục Lục
 1. [Tổng Quan](#tổng-quan)
-2. [Phân Tích Chức Năng Đăng Ký Tài Khoản](#phân-tích-chức-năng-đăng-ký-tài-khoản)
-   - 2.1. Danh Sách User Stories
-   - 2.2. Đặc Tả Chức Năng
-   - 2.3. Scenario
-   - 2.4. Happy Path
-   - 2.5. Unhappy Path
-   - 2.6. Acceptance Criteria
-   - 2.7. Acceptance Test
-3. [Luồng Quy Tắc Nghiệp Vụ](#luồng-quy-tắc-nghiệp-vụ)
-4. [Kết Luận](#kết-luận)
+2. [User Story & INVEST](#user-story--invest)
+3. [Thin Vertical Slice](#thin-vertical-slice)
+4. [Kịch Bản BDD](#kịch-bản-bdd)
+5. [Acceptance Criteria](#acceptance-criteria)
+6. [Quy Tắc Nghiệp Vụ](#quy-tắc-nghiệp-vụ)
+7. [Kết Luận](#kết-luận)
 
 ---
 
@@ -22,129 +18,152 @@
 
 **Người thực hiện:** Trương Đức Hiếu  
 **Chủ đề:** Web bán quần áo online  
-**Actor:** Guest (Khách hàng chưa đăng nhập / chưa có tài khoản)  
+**Actor:** Guest (Khách hàng chưa đăng nhập / chưa có tài khoản)
 
-Chức năng Đăng ký tài khoản cho phép khách truy cập website tạo tài khoản thành viên mới để sử dụng các dịch vụ như mua hàng, theo dõi đơn hàng, quản lý thông tin cá nhân và nhận ưu đãi từ hệ thống.
-
-**Tầm quan trọng:** Đây là chức năng quan trọng giúp chuyển đổi Guest thành khách hàng chính thức của website, góp phần tăng cơ sở khách hàng và nâng cao tỷ lệ chuyển đổi (conversion rate).
+Chức năng Đăng ký tài khoản cho phép khách truy cập website tạo tài khoản thành viên mới để sử dụng các dịch vụ như mua hàng, theo dõi đơn hàng, quản lý thông tin cá nhân.
 
 ---
 
-## Phân Tích Chức Năng Đăng Ký Tài Khoản
+## User Story & INVEST
 
-### 2.1. Danh Sách User Stories
+### User Story (US1)
+**Là một khách hàng mới, tôi muốn đăng ký tài khoản để có thể mua hàng trên website**
 
-| ID | User Story |
-|---|---|
-| US1 | Là một Guest, tôi muốn đăng ký tài khoản để có thể mua hàng trên website. |
-| US2 | Là một Guest, tôi muốn đăng ký nhanh bằng email và mật khẩu để tiết kiệm thời gian. |
-| US3 | Là một Guest, tôi muốn nhận thông báo sau khi đăng ký thành công để biết tài khoản đã được tạo. |
+### Đánh giá Tiêu Chí INVEST
 
----
-
-### 2.2. Đặc Tả Chức Năng
-
-| Thông Tin | Chi Tiết |
-|---|---|
-| **Tên chức năng** | Đăng ký tài khoản |
-| **Actor** | Guest |
-| **Mô tả** | Guest nhập thông tin cá nhân để tạo tài khoản mới trên hệ thống. |
-| **Điều kiện trước** | Người dùng chưa có tài khoản. |
-| **Điều kiện sau** | Tài khoản mới được tạo thành công và lưu vào cơ sở dữ liệu. |
+| Tiêu Chí | Đánh Giá | Giải Thích |
+|---------|---------|-----------|
+| **I - Independent (Độc lập)** | ✅ | US1 không phụ thuộc vào các user story khác |
+| **N - Negotiable (Có thể thảo luận)** | ✅ | Có thể thảo luận chi tiết các trường dữ liệu |
+| **V - Valuable (Có giá trị)** | ✅ | Mang lại giá trị trực tiếp cho khách hàng |
+| **E - Estimable (Có thể ước lượng)** | ✅ | Có thể ước lượng được trong khoảng 3-5 ngày |
+| **S - Small (Nhỏ gọn)** | ✅ | Có thể hoàn thành trong 1 sprint (2 tuần) |
+| **T - Testable (Có thể kiểm thử)** | ✅ | Có acceptance criteria rõ ràng |
 
 ---
 
-### 2.3. Scenario (Kịch Bản Kèm Hoàn Cảnh)
+## Thin Vertical Slice
 
-Một khách hàng mới tên **Vy** truy cập website bán quần áo online và muốn mua áo khoác đang giảm giá. Để thực hiện thanh toán và nhận ưu đãi thành viên, Vy chọn chức năng đăng ký tài khoản mới.
+Chức năng đăng ký được chia thành 3 lát cắt ngang hoàn chỉnh:
 
----
+### Lát Cắt 1: Giao Diện Frontend (UI Layer)
+- Hiển thị form đăng ký với các trường: Họ tên, Email, Số điện thoại, Mật khẩu
+- Validate dữ liệu phía client (real-time validation)
+- Hiển thị thông báo lỗi/thành công
+- Nút "Đăng ký" và "Hủy"
 
-### 2.4. Happy Path (Kịch Bản Thành Công)
+### Lát Cắt 2: Logic Backend (Business Logic Layer)
+- Nhận dữ liệu từ frontend qua API endpoint `/api/auth/register`
+- Validate lại dữ liệu phía server
+- Kiểm tra email đã tồn tại chưa
+- Mã hóa (hash) mật khẩu
+- Tạo record user mới
 
-1. Guest truy cập website.
-2. Chọn nút **Đăng ký**.
-3. Hệ thống hiển thị form đăng ký.
-4. Guest nhập họ tên, email, số điện thoại, mật khẩu.
-5. Nhấn nút **Tạo tài khoản**.
-6. Hệ thống kiểm tra thông tin hợp lệ.
-7. Tạo tài khoản thành công.
-8. Hiển thị thông báo đăng ký thành công.
-
----
-
-### 2.5. Unhappy Path (Kịch Bản Lỗi)
-
-#### Trường Hợp 1: Thiếu Thông Tin
-- Guest bỏ trống họ tên hoặc email.
-- Hệ thống báo lỗi yêu cầu nhập đầy đủ.
-
-#### Trường Hợp 2: Email Sai Định Dạng
-- Guest nhập email không hợp lệ.
-- Hệ thống báo lỗi email không đúng định dạng.
-
-#### Trường Hợp 3: Email Đã Tồn Tại
-- Guest nhập email đã đăng ký trước đó.
-- Hệ thống báo email đã được sử dụng.
-
-#### Trường Hợp 4: Mật Khẩu Quá Ngắn
-- Guest nhập mật khẩu dưới 6 ký tự.
-- Hệ thống báo mật khẩu không hợp lệ.
+### Lát Cắt 3: Database & Security (Data Layer)
+- Lưu user vào bảng `users` trong database
+- Áp dụng mã hóa mật khẩu (bcrypt)
+- Gửi email xác nhận đến người dùng
+- Ghi log hoạt động
 
 ---
 
-### 2.6. Acceptance Criteria (Tiêu Chí Chấp Nhận)
+## Kịch Bản BDD
 
-| Mã AC | Tiêu Chí Chấp Nhận |
-|---|---|
-| AC01 | Người dùng phải nhập đầy đủ họ tên, email và mật khẩu. |
-| AC02 | Email phải đúng định dạng. |
-| AC03 | Mỗi email chỉ được đăng ký một tài khoản. |
-| AC04 | Mật khẩu tối thiểu 6 ký tự. |
-| AC05 | Sau khi đăng ký thành công phải hiển thị thông báo. |
-| AC06 | Tài khoản mới phải được lưu vào hệ thống. |
+### Scenario 1: Đăng Ký Thành Công (Happy Path)
 
----
+Feature: Đăng Ký Tài Khoản
+  Scenario : Khách hàng đăng ký tài khoản thành công
+    Given: Khách hàng chưa có tài khoản
+    And: Khách hàng đang ở trang đăng ký
+    And: Form đăng ký được hiển thị đầy đủ
+    
+    When: Khách hàng nhập họ tên: "Nguyễn Văn A"
+    And: Khách hàng nhập email: "vana@example.com"
+    And: Khách hàng nhập số điện thoại: "0987654321"
+    And: Khách hàng nhập mật khẩu: "SecurePass123"
+    And: Khách hàng nhấn nút "Đăng Ký"
+    
+    Then: Hệ thống kiểm tra thông tin hợp lệ
+    And: Tài khoản được tạo thành công
+    And: Email xác nhận được gửi tới "vana@example.com"
+    And: Khách hàng thấy thông báo "Đăng ký thành công! Vui lòng kiểm tra email."
+    And: Khách hàng được chuyển hướng tới trang đăng nhập
+ Scenario 2: Thiếu Thông Tin (Unhappy Path)  
+   Scenario: Khách hàng bỏ trống email
+    Given: Khách hàng ở trang đăng ký
+    
+    When: Khách hàng bỏ trống trường email
+    And: Khách hàng nhấn nút "Đăng Ký"
+    
+    Then: Hệ thống hiển thị thông báo lỗi: "Email không được để trống"
+    And: Form đăng ký vẫn được giữ nguyên
+    And: Khách hàng có thể nhập lại email
 
-### 2.7. Acceptance Test (Kiểm Thử Chấp Nhận)
+Scenario 3: Email Sai Định Dạng (Unhappy Path)
+ Scenario: Khách hàng nhập email sai định dạng
+    Given: Khách hàng ở trang đăng ký
+    
+    When: Khách hàng nhập email: "vana.example.com" (không có @)
+    And: Khách hàng nhấn nút "Đăng Ký"
+    
+    Then: Hệ thống hiển thị thông báo lỗi: "Email không đúng định dạng"
+    And: Form đăng ký vẫn được giữ nguyên
 
-| Test Case | Dữ Liệu Nhập | Kết Quả Mong Đợi | Trạng Thái |
-|---|---|---|---|
-| TC01 | Bỏ trống email | Báo lỗi bắt buộc nhập email | ✓ |
-| TC02 | Nhập email sai định dạng (vd: abc@) | Báo lỗi email không hợp lệ | ✓ |
-| TC03 | Nhập email đã tồn tại | Báo lỗi email đã được sử dụng | ✓ |
-| TC04 | Nhập mật khẩu 4 ký tự | Báo lỗi mật khẩu quá ngắn | ✓ |
-| TC05 | Nhập đúng toàn bộ thông tin | Đăng ký thành công | ✓ |
+ Scenario 4: Email Đã Tồn Tại (Unhappy Path)
+   Scenario: Khách hàng nhập email đã được đăng ký
+    Given: Khách hàng ở trang đăng ký
+    And: Email "vana@example.com" đã tồn tại trong hệ thống
+    
+    When: Khách hàng nhập email: "vana@example.com"
+    And: Khách hàng nhấn nút "Đăng Ký"
+    
+    Then: Hệ thống kiểm tra và phát hiện email trùng
+    And: Hệ thống hiển thị thông báo lỗi: "Email này đã được sử dụng"
+    And: Form đăng ký vẫn được giữ nguyên
 
----
+ Scenario 5: Mật Khẩu Quá Ngắn (Unhappy Path)
+  Scenario: Khách hàng nhập mật khẩu quá ngắn
+    Given: Khách hàng ở trang đăng ký
+    
+    When: Khách hàng nhập mật khẩu: "123456" (6 ký tự)
+    And: Khách hàng nhấn nút "Đăng Ký"
+    
+    Then: Hệ thống kiểm tra độ dài mật khẩu
+    And: Hệ thống hiển thị thông báo lỗi: "Mật khẩu phải tối thiểu 8 ký tự"
+    And: Form đăng ký vẫn được giữ nguyên
 
-## Luồng Quy Tắc Nghiệp Vụ
+   Mã AC	Tiêu Chí Chấp Nhận
+AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
+AC02	Email phải đúng định dạng: [username]@[domain].[extension]
+AC03	Mỗi email chỉ được đăng ký một tài khoản duy nhất
+AC04	Mật khẩu tối thiểu 8 ký tự (yêu cầu hoa, thường, số, ký tự đặc biệt)
+AC05	Số điện thoại phải là số hợp lệ (10-11 chữ số)
+AC06	Sau khi đăng ký thành công phải hiển thị thông báo rõ ràng
+AC07	Email xác nhận phải được gửi tới người dùng
+AC08	Tài khoản mới phải được lưu vào database
+AC09	Mật khẩu phải được mã hóa (hash) trước lưu
+AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
 
-### Business Rules
 
-#### Quy Tắc 1: Trùng Email
-- Hệ thống không cho phép hai tài khoản dùng chung một email.
-- **Mục đích:** Bảo vệ tính duy nhất của tài khoản và phòng chống gian lận.
-
-#### Quy Tắc 2: Bảo Mật Mật Khẩu
-- Mật khẩu phải được mã hóa (hash) trước khi lưu cơ sở dữ liệu.
-- **Mục đích:** Bảo vệ thông tin nhạy cảm của người dùng.
-- **Phương pháp:** Sử dụng thuật toán mã hóa mạnh (bcrypt, PBKDF2, v.v.)
-
-#### Quy Tắc 3: Xác Thực Dữ Liệu
-- Email phải đúng cấu trúc: `[username]@[domain].[extension]`
-- Số điện thoại chỉ chứa số (và dấu + cho số quốc tế).
-- Họ tên không được chứa ký tự đặc biệt.
-- **Mục đích:** Đảm bảo chất lượng dữ liệu trong hệ thống.
-
-#### Quy Tắc 4: Thông Báo
-- Sau khi đăng ký thành công phải gửi thông báo hoặc chuyển sang trang đăng nhập.
-- Email xác nhận có thể được gửi cho người dùng.
-- **Mục đích:** Cung cấp phản hồi rõ ràng cho người dùng và xác minh email hợp lệ.
-
----
-
-## Kết Luận
-
-Chức năng **Đăng ký tài khoản** là một tính năng thiết yếu cho website bán quần áo online. Việc thiết kế chi tiết với các test case và acceptance criteria rõ ràng sẽ giúp đảm bảo chất lượng phần mềm và cải thiện trải nghiệm người dùng.
-
+Quy Tắc Nghiệp Vụ
+Quy Tắc 1: Email Duy Nhất
+Nội dung: Hệ thống không cho phép hai tài khoản dùng chung một email
+Mục đích: Bảo vệ tính duy nhất của tài khoản, phòng chống gian lận
+Thực hiện: Kiểm tra email trong database trước khi tạo account mới
+Quy Tắc 2: Mật Khẩu Mạnh
+Nội dung: Mật khẩu phải chứa ít nhất 8 ký tự: chữ hoa, chữ thường, số, ký tự đặc biệt
+Mục đích: Bảo vệ tài khoản khỏi tấn công brute-force
+Thực hiện: Validate mật khẩu trên server trước lưu vào database
+Quy Tắc 3: Bảo Mật Dữ Liệu
+Nội dung: Mật khẩu phải được mã hóa (hash) trước khi lưu cơ sở dữ liệu
+Mục đích: Bảo vệ thông tin nhạy cảm của người dùng
+Phương pháp: Sử dụng thuật toán bcrypt hoặc PBKDF2
+Quy Tắc 4: Xác Thực Email
+Nội dung: Sau khi đăng ký thành công phải gửi email xác nhận
+Mục đích: Cung cấp phản hồi rõ ràng cho người dùng, xác minh email hợp lệ
+Thực hiện: Gửi email qua Email Service (SendGrid, Mailgun, v.v.)
+Quy Tắc 5: Xác Thực Dữ Liệu
+Họ tên: Không được chứa ký tự đặc biệt, độ dài 2-100 ký tự
+Số điện thoại: Chỉ chứa số (0-9) và dấu + cho số quốc tế
+Email: Định dạng chuẩn RFC 5322
+Mục đích: Đảm bảo chất lượng dữ liệu trong hệ thống
