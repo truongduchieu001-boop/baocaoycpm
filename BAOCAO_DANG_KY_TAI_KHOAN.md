@@ -91,6 +91,8 @@ Feature: Đăng Ký Tài Khoản
     And: Khách hàng thấy thông báo "Đăng ký thành công! Vui lòng kiểm tra email."
     And: Khách hàng được chuyển hướng tới trang đăng nhập
  Scenario 2: Thiếu Thông Tin (Unhappy Path)  
+  
+   
    Scenario: Khách hàng bỏ trống email
    
     Given: Khách hàng ở trang đăng ký
@@ -103,6 +105,8 @@ Feature: Đăng Ký Tài Khoản
     And: Khách hàng có thể nhập lại email
 
 Scenario 3: Email Sai Định Dạng (Unhappy Path)
+
+ 
  Scenario: Khách hàng nhập email sai định dạng
    
     Given: Khách hàng ở trang đăng ký
@@ -114,6 +118,8 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Form đăng ký vẫn được giữ nguyên
 
  Scenario 4: Email Đã Tồn Tại (Unhappy Path)
+  
+   
    Scenario: Khách hàng nhập email đã được đăng ký
    
     Given: Khách hàng ở trang đăng ký
@@ -127,6 +133,8 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Form đăng ký vẫn được giữ nguyên
 
  Scenario 5: Mật Khẩu Quá Ngắn (Unhappy Path)
+ 
+  
   Scenario: Khách hàng nhập mật khẩu quá ngắn
    
     Given: Khách hàng ở trang đăng ký
