@@ -108,7 +108,7 @@ Một khách hàng mới tên **Vy** truy cập website bán quần áo online v
 
 ### 2.7. Acceptance Test (Kiểm Thử Chấp Nhận)
 
-| Test Case | Dữ Liệu Nhập | Kết Qu�� Mong Đợi | Trạng Thái |
+| Test Case | Dữ Liệu Nhập | Kết Quả Mong Đợi | Trạng Thái |
 |---|---|---|---|
 | TC01 | Bỏ trống email | Báo lỗi bắt buộc nhập email | ✓ |
 | TC02 | Nhập email sai định dạng (vd: abc@) | Báo lỗi email không hợp lệ | ✓ |
