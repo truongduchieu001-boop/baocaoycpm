@@ -147,37 +147,46 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Form đăng ký vẫn được giữ nguyên
 
    Mã AC	Tiêu Chí Chấp Nhận
-AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
-AC02	Email phải đúng định dạng: [username]@[domain].[extension]
-AC03	Mỗi email chỉ được đăng ký một tài khoản duy nhất
-AC04	Mật khẩu tối thiểu 8 ký tự (yêu cầu hoa, thường, số, ký tự đặc biệt)
-AC05	Số điện thoại phải là số hợp lệ (10-11 chữ số)
-AC06	Sau khi đăng ký thành công phải hiển thị thông báo rõ ràng
-AC07	Email xác nhận phải được gửi tới người dùng
-AC08	Tài khoản mới phải được lưu vào database
-AC09	Mật khẩu phải được mã hóa (hash) trước lưu
-AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
+
+    AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
+    AC02	Email phải đúng định dạng: [username]@[domain].[extension]
+    AC03	Mỗi email chỉ được đăng ký một tài khoản duy nhất
+    AC04	Mật khẩu tối thiểu 8 ký tự (yêu cầu hoa, thường, số, ký tự đặc biệt)
+    AC05	Số điện thoại phải là số hợp lệ (10-11 chữ số)
+    AC06	Sau khi đăng ký thành công phải hiển thị thông báo rõ ràng
+    AC07	Email xác nhận phải được gửi tới người dùng
+    AC08	Tài khoản mới phải được lưu vào database
+    AC09	Mật khẩu phải được mã hóa (hash) trước lưu
+    AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
 
 
 6. Quy Tắc Nghiệp Vụ
+
+
 Quy Tắc 1: Email Duy Nhất
-Nội dung: Hệ thống không cho phép hai tài khoản dùng chung một email
-Mục đích: Bảo vệ tính duy nhất của tài khoản, phòng chống gian lận
-Thực hiện: Kiểm tra email trong database trước khi tạo account mới
+   
+    Nội dung: Hệ thống không cho phép hai tài khoản dùng chung một email
+    Mục đích: Bảo vệ tính duy nhất của tài khoản, phòng chống gian lận
+    Thực hiện: Kiểm tra email trong database trước khi tạo account mới
+
 Quy Tắc 2: Mật Khẩu Mạnh
-Nội dung: Mật khẩu phải chứa ít nhất 8 ký tự: chữ hoa, chữ thường, số, ký tự đặc biệt
-Mục đích: Bảo vệ tài khoản khỏi tấn công brute-force
-Thực hiện: Validate mật khẩu trên server trước lưu vào database
+    
+      Nội dung: Mật khẩu phải chứa ít nhất 8 ký tự: chữ hoa, chữ thường, số, ký tự đặc biệt
+      Mục đích: Bảo vệ tài khoản khỏi tấn công brute-force
+      Thực hiện: Validate mật khẩu trên server trước lưu vào database
 Quy Tắc 3: Bảo Mật Dữ Liệu
-Nội dung: Mật khẩu phải được mã hóa (hash) trước khi lưu cơ sở dữ liệu
-Mục đích: Bảo vệ thông tin nhạy cảm của người dùng
-Phương pháp: Sử dụng thuật toán bcrypt hoặc PBKDF2
+      
+      Nội dung: Mật khẩu phải được mã hóa (hash) trước khi lưu cơ sở dữ liệu
+      Mục đích: Bảo vệ thông tin nhạy cảm của người dùng
+      Phương pháp: Sử dụng thuật toán bcrypt hoặc PBKDF2
 Quy Tắc 4: Xác Thực Email
-Nội dung: Sau khi đăng ký thành công phải gửi email xác nhận
-Mục đích: Cung cấp phản hồi rõ ràng cho người dùng, xác minh email hợp lệ
-Thực hiện: Gửi email qua Email Service (SendGrid, Mailgun, v.v.)
+      
+      Nội dung: Sau khi đăng ký thành công phải gửi email xác nhận
+      Mục đích: Cung cấp phản hồi rõ ràng cho người dùng, xác minh email hợp lệ
+      Thực hiện: Gửi email qua Email Service (SendGrid, Mailgun, v.v.)
 Quy Tắc 5: Xác Thực Dữ Liệu
-Họ tên: Không được chứa ký tự đặc biệt, độ dài 2-100 ký tự
-Số điện thoại: Chỉ chứa số (0-9) và dấu + cho số quốc tế
-Email: Định dạng chuẩn RFC 5322
-Mục đích: Đảm bảo chất lượng dữ liệu trong hệ thống
+      
+      Họ tên: Không được chứa ký tự đặc biệt, độ dài 2-100 ký tự
+      Số điện thoại: Chỉ chứa số (0-9) và dấu + cho số quốc tế
+      Email: Định dạng chuẩn RFC 5322
+      Mục đích: Đảm bảo chất lượng dữ liệu trong hệ thống
