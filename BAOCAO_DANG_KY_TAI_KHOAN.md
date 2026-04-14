@@ -65,8 +65,7 @@ Chức năng đăng ký được chia thành 3 lát cắt ngang hoàn chỉnh:
 - Ghi log hoạt động
 
 ---
-
-## Kịch Bản BDD
+4. ## Kịch Bản BDD
 
 ### Scenario 1: Đăng Ký Thành Công (Happy Path)
 
@@ -146,21 +145,23 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Hệ thống hiển thị thông báo lỗi: "Mật khẩu phải tối thiểu 8 ký tự"
     And: Form đăng ký vẫn được giữ nguyên
 
- 5.  Mã AC	   Tiêu Chí Chấp Nhận
+ 5. ## Acceptance Criteria
+     Mã AC	   Tiêu Chí Chấp Nhận
 
-    AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
-    AC02	Email phải đúng định dạng: [username]@[domain].[extension]
-    AC03	Mỗi email chỉ được đăng ký một tài khoản duy nhất
-    AC04	Mật khẩu tối thiểu 8 ký tự (yêu cầu hoa, thường, số, ký tự đặc biệt)
-    AC05	Số điện thoại phải là số hợp lệ (10-11 chữ số)
-    AC06	Sau khi đăng ký thành công phải hiển thị thông báo rõ ràng
-    AC07	Email xác nhận phải được gửi tới người dùng
-    AC08	Tài khoản mới phải được lưu vào database
-    AC09	Mật khẩu phải được mã hóa (hash) trước lưu
-    AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
+  
+        AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
+        AC02	Email phải đúng định dạng: [username]@[domain].[extension]
+        AC03	Mỗi email chỉ được đăng ký một tài khoản duy nhất
+        AC04	Mật khẩu tối thiểu 8 ký tự (yêu cầu hoa, thường, số, ký tự đặc biệt)
+        AC05	Số điện thoại phải là số hợp lệ (10-11 chữ số)
+        AC06	Sau khi đăng ký thành công phải hiển thị thông báo rõ ràng
+        AC07	Email xác nhận phải được gửi tới người dùng
+        AC08	Tài khoản mới phải được lưu vào database
+        AC09	Mật khẩu phải được mã hóa (hash) trước lưu
+        AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
+    
 
-
-6. Quy Tắc Nghiệp Vụ
+6. ## Quy Tắc Nghiệp Vụ
 
 
 Quy Tắc 1: Email Duy Nhất
