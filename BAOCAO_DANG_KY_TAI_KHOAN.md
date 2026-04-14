@@ -146,7 +146,7 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Hệ thống hiển thị thông báo lỗi: "Mật khẩu phải tối thiểu 8 ký tự"
     And: Form đăng ký vẫn được giữ nguyên
 
-   Mã AC	   Tiêu Chí Chấp Nhận
+ 5.  Mã AC	   Tiêu Chí Chấp Nhận
 
     AC01	Người dùng phải nhập đầy đủ: Họ tên, Email, Số điện thoại, Mật khẩu
     AC02	Email phải đúng định dạng: [username]@[domain].[extension]
