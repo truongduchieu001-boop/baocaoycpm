@@ -65,7 +65,7 @@ Chức năng đăng ký được chia thành 3 lát cắt ngang hoàn chỉnh:
 - Ghi log hoạt động
 
 ---
-4. ## Kịch Bản BDD
+ ## Kịch Bản BDD
 
 ### Scenario 1: Đăng Ký Thành Công (Happy Path)
 
@@ -145,7 +145,7 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
     And: Hệ thống hiển thị thông báo lỗi: "Mật khẩu phải tối thiểu 8 ký tự"
     And: Form đăng ký vẫn được giữ nguyên
 
- 5. ## Acceptance Criteria
+  ## Acceptance Criteria
      Mã AC	   Tiêu Chí Chấp Nhận
 
   
@@ -161,7 +161,7 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
         AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
     
 
-6. ## Quy Tắc Nghiệp Vụ
+ ## Quy Tắc Nghiệp Vụ
 
 
 Quy Tắc 1: Email Duy Nhất
