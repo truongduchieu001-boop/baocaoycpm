@@ -23,7 +23,6 @@
 **Người thực hiện:** Trương Đức Hiếu  
 **Chủ đề:** Web bán quần áo online  
 **Actor:** Guest (Khách hàng chưa đăng nhập / chưa có tài khoản)  
-**Ngày:** 14/04/2026
 
 Chức năng Đăng ký tài khoản cho phép khách truy cập website tạo tài khoản thành viên mới để sử dụng các dịch vụ như mua hàng, theo dõi đơn hàng, quản lý thông tin cá nhân và nhận ưu đãi từ hệ thống.
 
