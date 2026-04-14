@@ -148,19 +148,3 @@ Một khách hàng mới tên **Vy** truy cập website bán quần áo online v
 
 Chức năng **Đăng ký tài khoản** là một tính năng thiết yếu cho website bán quần áo online. Việc thiết kế chi tiết với các test case và acceptance criteria rõ ràng sẽ giúp đảm bảo chất lượng phần mềm và cải thiện trải nghiệm người dùng.
 
-### Điểm Mạnh:
-- ✅ Quy trình đơn giản, dễ sử dụng
-- ✅ Kiểm tra đầu vào toàn diện
-- ✅ Bảo mật mật khẩu tốt
-- ✅ Xử lý lỗi rõ ràng
-
-### Khuyến Nghị Thêm:
-- 📌 Cân nhắc thêm tính năng đăng ký qua mạng xã hội (Google, Facebook)
-- 📌 Thêm xác minh email trước khi kích hoạt tài khoản
-- 📌 Thêm CAPTCHA để chống bot
-- 📌 Ghi log hoạt động đăng ký cho mục đích phân tích
-
----
-
-**Phê duyệt bởi:** Trương Đức Hiếu  
-**Ngày báo cáo:** 14/04/2026
