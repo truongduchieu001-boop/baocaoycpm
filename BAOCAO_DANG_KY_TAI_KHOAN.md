@@ -10,7 +10,6 @@
 4. [Kịch Bản BDD](#kịch-bản-bdd)
 5. [Acceptance Criteria](#acceptance-criteria)
 6. [Quy Tắc Nghiệp Vụ](#quy-tắc-nghiệp-vụ)
-7. [Kết Luận](#kết-luận)
 
 ---
 
@@ -145,7 +144,7 @@ AC09	Mật khẩu phải được mã hóa (hash) trước lưu
 AC10	Khách hàng được chuyển hướng tới trang đăng nhập sau khi thành công
 
 
-Quy Tắc Nghiệp Vụ
+6. Quy Tắc Nghiệp Vụ
 Quy Tắc 1: Email Duy Nhất
 Nội dung: Hệ thống không cho phép hai tài khoản dùng chung một email
 Mục đích: Bảo vệ tính duy nhất của tài khoản, phòng chống gian lận
