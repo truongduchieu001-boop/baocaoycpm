@@ -72,6 +72,7 @@ Chức năng đăng ký được chia thành 3 lát cắt ngang hoàn chỉnh:
 
 Feature: Đăng Ký Tài Khoản
   Scenario : Khách hàng đăng ký tài khoản thành công
+   
     Given: Khách hàng chưa có tài khoản
     And: Khách hàng đang ở trang đăng ký
     And: Form đăng ký được hiển thị đầy đủ
@@ -89,6 +90,7 @@ Feature: Đăng Ký Tài Khoản
     And: Khách hàng được chuyển hướng tới trang đăng nhập
  Scenario 2: Thiếu Thông Tin (Unhappy Path)  
    Scenario: Khách hàng bỏ trống email
+   
     Given: Khách hàng ở trang đăng ký
     
     When: Khách hàng bỏ trống trường email
@@ -100,6 +102,7 @@ Feature: Đăng Ký Tài Khoản
 
 Scenario 3: Email Sai Định Dạng (Unhappy Path)
  Scenario: Khách hàng nhập email sai định dạng
+   
     Given: Khách hàng ở trang đăng ký
     
     When: Khách hàng nhập email: "vana.example.com" (không có @)
@@ -110,6 +113,7 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
 
  Scenario 4: Email Đã Tồn Tại (Unhappy Path)
    Scenario: Khách hàng nhập email đã được đăng ký
+   
     Given: Khách hàng ở trang đăng ký
     And: Email "vana@example.com" đã tồn tại trong hệ thống
     
@@ -122,6 +126,7 @@ Scenario 3: Email Sai Định Dạng (Unhappy Path)
 
  Scenario 5: Mật Khẩu Quá Ngắn (Unhappy Path)
   Scenario: Khách hàng nhập mật khẩu quá ngắn
+   
     Given: Khách hàng ở trang đăng ký
     
     When: Khách hàng nhập mật khẩu: "123456" (6 ký tự)
