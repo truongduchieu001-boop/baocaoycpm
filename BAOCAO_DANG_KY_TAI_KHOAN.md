@@ -71,6 +71,8 @@ Chức năng đăng ký được chia thành 3 lát cắt ngang hoàn chỉnh:
 ### Scenario 1: Đăng Ký Thành Công (Happy Path)
 
 Feature: Đăng Ký Tài Khoản
+  
+  
   Scenario : Khách hàng đăng ký tài khoản thành công
    
     Given: Khách hàng chưa có tài khoản
